@@ -1,0 +1,151 @@
+1.What is the difference between an interface and a type in TypeScript? When do you use each?
+
+Both interface and type define the structure or shape of data in TypeScript, but they have some differences.
+
+Interface: Mainly used to define the structure of objects, such as an expense or component props.
+
+Type: Used to define object shapes too, but it is especially useful for union types, primitive aliases, and combining different types.
+
+Example from my project:
+
+
+typescript
+interface Expense {
+  id: number;
+  title: string;
+  amount: number;
+  category: Category;
+  date: string;
+  note?: string;
+}
+
+Here, I use an interface to define what properties an expense must have.
+
+
+typescript
+type Category =
+  | 'Food'
+  | 'Transport'
+  | 'Shopping'
+  | 'Health'
+  | 'Education'
+  | 'Other';
+Here, I use a type to restrict the category to a specific set of allowed values.
+
+When do I use each?
+
+I use interface when defining objects and component props, and type when defining union types, such as Category and 
+FilterType.
+
+2.What does the ? symbol mean in an interface property? Give an example from your code.
+
+The ? symbol means that a property is optional. The object can contain that property, but it is not required.
+
+Example from my Expense interface:
+
+
+typescript
+interface Expense {
+  id: number;
+  title: string;
+  amount: number;
+  category: Category;
+  date: string;
+  note?: string;
+}
+The note?: string property means that an expense can have a note, but it does not have to.
+
+For example, both objects are valid:
+
+
+typescript
+const expense1: Expense = {
+  id: 1,
+  title: 'Lunch',
+  amount: 150,
+  category: 'Food',
+  date: '2026-10-16',
+};
+
+const expense2: Expense = {
+  id: 2,
+  title: 'Bus Ticket',
+  amount: 30,
+  category: 'Transport',
+  date: '2026-10-16',
+  note: 'Travel to college',
+};
+The first expense has no note, while the second expense includes one.
+
+If I remove the ? and write note: string, TypeScript will require every expense object to have a note property.
+
+3.What is a generic in TypeScript? Explain useLocalStorage<T> in your own words — what does <T> do?
+
+A generic allows me to write reusable code that works with different data types without losing type safety.
+
+In my project, I created a generic custom hook:
+
+
+typescript
+function useLocalStorage<T>(
+  key: string,
+  initialValue: T
+): [T, (value: T) => void] {
+  // Hook implementation
+}
+Here, <T> is a type parameter. It acts as a placeholder for the data type that I provide when using the hook.
+
+For example:
+
+
+typescript
+const [expenses, setExpenses] =
+  useLocalStorage<Expense[]>('expenses', []);
+In this case, T becomes Expense[], meaning an array of expenses.
+
+Another example:
+
+
+typescript
+const [darkMode, setDarkMode] =
+  useLocalStorage<boolean>('darkMode', false);
+Here, T becomes boolean.
+
+Why is this useful?
+
+I don't need to write a separate localStorage hook for expenses, strings, and booleans. The same hook works with different types, and TypeScript checks that I store the correct kind of data.
+
+In simple words, <T> makes my hook reusable while maintaining type safety.
+
+4.Give one real example from your code where TypeScript caught an error that JavaScript would have silently missed.
+What was the error and what did TypeScript show you?
+
+One example from my project is the Category type.
+
+I defined the allowed categories as:
+
+
+typescript
+type Category =
+  | 'Food'
+  | 'Transport'
+  | 'Shopping'
+  | 'Health'
+  | 'Education'
+  | 'Other';
+Suppose I accidentally write:
+
+
+typescript
+const category: Category = 'Travel';
+TypeScript reports an error similar to:
+
+
+text
+Type '"Travel"' is not assignable to type 'Category'.
+This happens because 'Travel' is not one of the allowed category values.
+
+In JavaScript, the assignment would be accepted without a type error. The invalid category might then appear in the UI 
+or cause problems with filtering.
+
+TypeScript catches the mistake during development, before I run the application.
