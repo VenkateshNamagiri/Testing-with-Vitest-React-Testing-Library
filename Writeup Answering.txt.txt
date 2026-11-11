@@ -1,0 +1,162 @@
+1.What is the difference between a unit test and an integration test?Give one example of each from your test files.
+
+Unit Test:
+
+A unit test checks a single function or component independently to make sure it works correctly.
+
+Example from my project:
+
+In formatters.test.ts, I tested the formatCurrency() function to check whether it correctly formats an amount.
+
+
+tsx
+it('formats a number with rupee symbol', () => {
+  expect(formatCurrency(1500))
+    .toBe('₹1,500.00')
+})
+
+This test checks only one function independently.
+
+Integration Test:
+
+An integration test checks whether multiple parts of an application work correctly together.
+
+Example from my project:
+
+In ExpenseForm.test.tsx, I tested whether entering expense details and submitting the form correctly calls the onAdd function with the entered data.
+
+
+tsx
+expect(onAdd).toHaveBeenCalledWith(
+  expect.objectContaining({
+    title: 'Coffee',
+    amount: 80
+  })
+)
+This checks whether the form inputs, form submission and callback work together.
+
+The major difference is a unit test checks one individual part, whereas an integration test checks how multiple parts work together.
+
+2.What does vi.fn() do and why do you need it when testing a component that receives a function as a prop?
+
+vi.fn() is a Vitest function that creates a mock function.
+
+It allows us to track whether a function was called, how many times it was called, and what arguments were passed to it.
+
+Example from my project:
+
+In ExpenseCard.test.tsx or ExpenseForm.test.tsx, I can use:
+
+
+tsx
+const onAdd = vi.fn()
+
+render(<ExpenseForm onAdd={onAdd} />)
+After submitting the form, I check:
+
+
+tsx
+expect(onAdd).toHaveBeenCalled()
+Or check the data passed to it:
+
+
+tsx
+expect(onAdd).toHaveBeenCalledWith(
+  expect.objectContaining({
+    title: 'Coffee',
+    amount: 80
+  })
+)
+
+We use vi.fn() because we want to test whether the component correctly calls the function passed through its props without executing the actual application logic.
+
+It helps us verify that user interactions trigger the correct callbacks.
+
+3.Why must tests not make real API calls? How did you mock an API call in your tests?
+
+Tests should not make real API calls because:
+
+Tests may depend on internet connectivity.
+
+Real APIs may be slow and make tests take longer.
+
+API servers may be unavailable.
+
+Real API data may change, making tests unpredictable.
+
+Some APIs may have rate limits or require authentication.
+
+To avoid these problems, we use mocking.
+
+Mocking means replacing a real API function with a fake function that returns predefined test data.
+
+Example from my project:
+
+
+tsx
+vi.mock('../../api/axios', () => ({
+  default: {
+    get: vi.fn(),
+    post: vi.fn()
+  }
+}))
+
+Then I provide mock data:
+
+
+tsx
+vi.mocked(api.get).mockResolvedValueOnce({
+  data: mockExpenses
+})
+
+Now, when the component calls api.get(), it receives the predefined mock expenses instead of making a real API request.
+
+The Major advantage is Mocking makes tests faster, reliable and independent of external servers.
+
+4.What does vi.useFakeTimers() do in your useDebounce test, and why is it needed?
+
+vi.useFakeTimers() is a Vitest function that replaces real timers with fake timers.
+
+It allows us to control time manually during testing instead of waiting for actual time to pass.
+
+Example from my project:
+
+In useDebounce.test.ts:
+
+
+tsx
+vi.useFakeTimers()
+
+const { result, rerender } = renderHook(
+  ({ value }) => useDebounce(value, 300),
+  { initialProps: { value: 'hello' } }
+)
+
+rerender({ value: 'world' })
+
+expect(result.current).toBe('hello')
+
+await act(() => vi.advanceTimersByTime(300))
+
+expect(result.current).toBe('world')
+
+vi.useRealTimers()
+Explanation:
+
+vi.useFakeTimers() enables fake timers.
+
+Initially, the hook returns hello.
+
+When the value changes to world, the debounce timer starts.
+
+Before 300 milliseconds, the value remains hello.
+
+vi.advanceTimersByTime(300) advances the fake timer by 300 milliseconds.
+
+Now the hook updates and returns world.
+
+vi.useRealTimers() restores normal timers.
+
+Without fake timers, we would have to wait for the actual 300 milliseconds every time we run the test.
+
+Fake timers make testing faster and allow us to check whether the debounce delay works correctly.

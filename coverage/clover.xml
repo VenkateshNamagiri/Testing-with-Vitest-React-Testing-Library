@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1794392731936" clover="3.2.0">
+  <project timestamp="1794392731937" name="All files">
+    <metrics statements="73" coveredstatements="72" conditionals="42" coveredconditionals="40" methods="30" coveredmethods="30" elements="145" coveredelements="142" complexity="0" loc="73" ncloc="73" packages="4" files="8" classes="8"/>
+    <package name="components">
+      <metrics statements="33" coveredstatements="33" conditionals="28" coveredconditionals="26" methods="12" coveredmethods="12"/>
+      <file name="ExpenseCard.tsx" path="C:\Users\venka\Desktop\expense-tracker-ts\src\components\ExpenseCard.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="ExpenseForm.tsx" path="C:\Users\venka\Desktop\expense-tracker-ts\src\components\ExpenseForm.tsx">
+        <metrics statements="14" coveredstatements="14" conditionals="12" coveredconditionals="11" methods="4" coveredmethods="4"/>
+        <line num="6" count="41" type="stmt"/>
+        <line num="9" count="41" type="stmt"/>
+        <line num="16" count="41" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="22" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="39" count="41" type="stmt"/>
+        <line num="59" count="246" type="stmt"/>
+      </file>
+      <file name="SummaryStats.tsx" path="C:\Users\venka\Desktop\expense-tracker-ts\src\components\SummaryStats.tsx">
+        <metrics statements="17" coveredstatements="17" conditionals="14" coveredconditionals="14" methods="6" coveredmethods="6"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="8" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="hooks">
+      <metrics statements="21" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="11" coveredmethods="11"/>
+      <file name="useDebounce.ts" path="C:\Users\venka\Desktop\expense-tracker-ts\src\hooks\useDebounce.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+      </file>
+      <file name="useForm.ts" path="C:\Users\venka\Desktop\expense-tracker-ts\src\hooks\useForm.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="12" count="41" type="stmt"/>
+        <line num="14" count="41" type="stmt"/>
+        <line num="15" count="30" type="stmt"/>
+        <line num="16" count="30" type="stmt"/>
+        <line num="19" count="41" type="stmt"/>
+        <line num="21" count="41" type="stmt"/>
+      </file>
+      <file name="useLocalStorage.ts" path="C:\Users\venka\Desktop\expense-tracker-ts\src\hooks\useLocalStorage.ts">
+        <metrics statements="10" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="types">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="C:\Users\venka\Desktop\expense-tracker-ts\src\types\index.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="81" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="18" coveredstatements="18" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="7"/>
+      <file name="formatters.ts" path="C:\Users\venka\Desktop\expense-tracker-ts\src\utils\formatters.ts">
+        <metrics statements="18" coveredstatements="18" conditionals="12" coveredconditionals="12" methods="7" coveredmethods="7"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
+        <line num="37" count="5" type="stmt"/>
+        <line num="39" count="5" type="stmt"/>
+        <line num="40" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="20" type="stmt"/>
+        <line num="42" count="20" type="stmt"/>
+        <line num="43" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="44" count="8" type="stmt"/>
+        <line num="45" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="4" type="stmt"/>
+        <line num="50" count="20" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
+  </project>
+</coverage>
